@@ -1,7 +1,7 @@
 from collections import OrderedDict
 from tabulate import tabulate
 
-f = open('/home/kamnee.maran/Videos/parking_input.txt', 'r');
+f = open('/home/kamnee.maran/Videos/parking-lot/parking_input.txt', 'r');
 data = f.read().split("\n")
 
 length = int(data[0][-1])
@@ -64,11 +64,19 @@ for i in data:
 
 	if (i.split(" ")[0] == "slot_number_for_registration_number"):
 		dic = OrderedDict(zip(vehicle, color))
-		print dic.keys()
 		if (i.split(" ")[1] in dic.keys() != -1):
 			print slot[(dic.keys()).index(i.split(" ")[1])]
                 else:
-			print "Not allocated"
+			print "Not found"
 	if (i.split(" ")[0] == "slot_numbers_for_cars_with_colour"):
+		slot_no=""
 		indices = [index for index, x in enumerate(color) if x == i.split(" ")[1]]
-		print indices
+		for s in indices:
+			slot_no =  slot_no + str(slot[s])+","
+		print slot_no[:-1]
+	if (i.split(" ")[0] == "registration_numbers_for_cars_with_colour"):
+		vehicle_no=""
+		indices = [index for index, x in enumerate(color) if x == i.split(" ")[1]]
+		for s in indices:
+			vehicle_no = vehicle_no + str(vehicle[s])+","
+		print vehicle_no[:-1]
