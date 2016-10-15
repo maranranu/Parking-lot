@@ -1,7 +1,10 @@
 from collections import OrderedDict
 from tabulate import tabulate
+import sys
 
-f = open('/home/kamnee.maran/Videos/parking-lot/parking_input.txt', 'r');
+file_name = sys.argv[1]
+  
+f = open(file_name, 'r');
 data = f.read().split("\n")
 
 length = int(data[0][-1])
@@ -51,9 +54,12 @@ for i in data:
 			print "Sorry, parking lot is full"
 		
 	if (i.split(" ")[0] == "leave"):
-		deallocate(dict, occupy, int(i.split(" ")[1])-1)
-		count = int(i.split(" ")[1])
-		print "Slot number ",count, "is free"
+		if (int(i.split(" ")[1]) < length and int(i.split(" ")[1]) < len(vehicle)):
+			deallocate(dict, occupy, int(i.split(" ")[1])-1)
+			count = int(i.split(" ")[1])
+			print "Slot number ",count, "is free"
+		else:
+			print "Not found"
 		
 	if (i.split(" ")[0] == "status"):
 		dic = OrderedDict(zip(vehicle, color))

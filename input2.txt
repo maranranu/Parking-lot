@@ -1,0 +1,17 @@
+create_parking_lot 7
+park KA01HH1234 White
+park KA01HH4567 Silver
+park KA01BB0001 Black
+park MH04AY1111 Silver
+park KA01HH2701 Blue
+park KA01HH3141 Black
+leave 5
+status
+park KA01P333 White
+leave 3
+park DL12AA9999 SIlver
+status
+registration_numbers_for_cars_with_colour Silver
+slot_numbers_for_cars_with_colour Black
+slot_number_for_registration_number KA01HH1234
+slot_number_for_registration_number MH04AY1111
